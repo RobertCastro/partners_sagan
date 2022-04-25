@@ -49,7 +49,7 @@
 }
 
 main.login{
-    background-image: url("/img/fondo_login.jpg");
+    /* background-image: url("/img/fondo_login.jpg"); */
     background-position: center, center;
     background-repeat: initial;
     background-size: cover;

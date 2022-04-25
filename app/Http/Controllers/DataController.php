@@ -14,16 +14,27 @@ class DataController extends Controller
 {
     public function index()
     {
+        // if (!session()->has("search")) {
+        //     session()->put("search", null);
+        //     session()->put("trashed", null);
+        // }
+        // return Inertia::render("Dashboard/Index", [
+        //     "filters" => session()->only(["search", "trashed"]),
+        //     "datos" => Data::where('number_table','<>', '',)
+        //     ->orderByDesc("updated_at")
+        //         ->filter(request()->only("search", "trashed"))
+        //         ->paginate(20),
+        // ]);
         if (!session()->has("search")) {
             session()->put("search", null);
             session()->put("trashed", null);
         }
-        return Inertia::render("Dashboard/Index", [
+        return Inertia::render("Dashboard/AffiliatedList", [
             "filters" => session()->only(["search", "trashed"]),
-            "datos" => Data::where('number_table','<>', '',)
+            "datos" => Data::where('name', '<>', '',)
             ->orderByDesc("updated_at")
-                ->filter(request()->only("search", "trashed"))
-                ->paginate(20),
+            ->filter(request()->only("search", "trashed"))
+            ->paginate(20),
         ]);
     }
 
