@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Asociados
+                Socios
             </h2>
         </template>
         <div class="py-12">
@@ -30,8 +30,9 @@
                     <div class="bg-white rounded shadow overflow-x-auto">
                         <table class="w-full whitespace-no-wrap">
                             <tr class="text-left font-bold">
-                                <th class="px-6 pt-6 pb-4">Nombre</th>
-                                <th class="px-6 pt-6 pb-4">Cédula</th>
+                                <th class="px-6 pt-6 pb-4">Nombre/Empresa</th>
+                                <th class="px-6 pt-6 pb-4">Cédula/NIT</th>
+                                <th class="px-6 pt-6 pb-4">Observaciones</th>
                             </tr>
                             <affiliated
                                 v-for="dato in datos.data"

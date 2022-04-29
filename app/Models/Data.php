@@ -10,7 +10,7 @@ class Data extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "dni", "number_table", 'key'];
+    protected $fillable = ["name", "dni", "number_table", 'key', 'observations'];
 
     public function scopeFilter(Builder $query, array $filters)
     {

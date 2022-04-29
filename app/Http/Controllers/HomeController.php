@@ -21,19 +21,20 @@ class HomeController extends Controller
         if ($request->has('dni')) {
 
             $dni = $request->get('dni');
-            $user = Data::where('dni', $dni)->first();
+            $user = DB::table("data")->where('dni', $dni)->first();
 
-            if ($user) {
+            if (!empty($user)) {
 
-                $usuario = Data::where('dni',$request->get('dni'))->first();
-                $key = $usuario->key;
+                $socio = Data::where('dni',$request->get('dni'))->get();
+                $name = $socio[0]->name;
+                $dni = $socio[0]->dni;
+                $observations = $socio[0]->observations;
 
-                $rand = rand(111, 999).$key;
-                return redirect('home/'.$rand. '/'. $dni.'/game')->with('key', $key);
+                return Inertia::render("Home/Index", ['name' => $name, 'dni' => $dni, 'observations' => $observations ]);
 
             } else {
 
-                return Inertia::render("Home/Index", ['msg' => "No se ha encontrado usuario"]);
+                return Inertia::render("Home/Index", ['msg' => "No se ha encontrado datos asociados al número de documento ingresado"]);
 
             }
         }

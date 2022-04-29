@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Imports\DataImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -32,7 +33,8 @@ class DataController extends Controller
         return Inertia::render("Dashboard/AffiliatedList", [
             "filters" => session()->only(["search", "trashed"]),
             "datos" => Data::where('name', '<>', '',)
-            ->orderByDesc("updated_at")
+            // ->orderByDesc("updated_at")
+            ->orderBy('name')
             ->filter(request()->only("search", "trashed"))
             ->paginate(20),
         ]);
@@ -47,7 +49,8 @@ class DataController extends Controller
         return Inertia::render("Dashboard/AffiliatedList", [
             "filters" => session()->only(["search", "trashed"]),
             "datos" => Data::where('name', '<>', '',)
-                ->orderByDesc("updated_at")
+                // ->orderByDesc("updated_at")
+                ->orderBy('name')
                 ->filter(request()->only("search", "trashed"))
                 ->paginate(20),
         ]);
@@ -55,6 +58,8 @@ class DataController extends Controller
 
     public function store(Request $request)
     {
+        DB::table('data')->truncate();
+
         $path1 = $request->file('csv')->store('temp');
         $path = storage_path('app') . '/' . $path1;
         $data = Excel::import(new DataImport, $path);

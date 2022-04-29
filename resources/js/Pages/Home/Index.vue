@@ -7,12 +7,32 @@
                         <p class="text-green-700 font-bold">Hola {{ user.name }}!</p>
                     </div>
                 </div> -->
-                <div class="w-full flex justify-center pt-8 sm:justify-start sm:pt-0">
+                <!--<div class="w-full flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <div class="w-full">
                         <jet-application-mark class="block h-20 w-full mb-8" />
                     </div>
-                </div>
+                </div>-->
+                {{ data }}
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 text-center">
+                    <div class="w-full" v-if="name">
+                      
+                        <table class="table-fixed text-center w-full">
+                            <thead class="border bg-gray-200 ">
+                                <tr>
+                                <th class="px-4 py-2">Nombre/Empresa</th>
+                                <th class="px-4 py-2">Cédula/NIT</th>
+                                <th class="px-4 py-2">Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border px-4 py-2">{{ name }}</td>
+                                    <td class="border px-4 py-2">{{ dni }}</td>
+                                    <td class="border px-4 py-2">{{ observations }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="w-full" v-if="msg">
                         <p class="text-red-500 font-bold">{{ msg }}</p>
                     </div>
@@ -50,7 +70,11 @@
         props: {
                 errors: Object,
                 user: Object,
-                msg: String
+                msg: String,
+                name: String,
+                dni: String,
+                observations: String,
+                data: String
             },
 
         data() {
@@ -58,9 +82,8 @@
             return {
                 processing: false,
                 form: {
-                    dni: null,
-                   
-                }
+                    dni: null, 
+                },
             }
         },
 

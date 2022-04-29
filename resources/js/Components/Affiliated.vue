@@ -6,6 +6,9 @@
         <td class="border-t">
             {{ dato.dni }}
         </td>
+        <td class="border-t">
+            {{ dato.observations }}
+        </td>
     </tr>
 </template>
 
