@@ -1,6 +1,6 @@
 <template>
     <home-layout>
-        <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
+        <div class="relative flex items-top justify-center  sm:items-center sm:pt-0">
             <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <!-- <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 text-center">
                     <div class="w-full" v-if="user">
@@ -15,8 +15,23 @@
                 {{ data }}
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 text-center">
                     <div class="w-full" v-if="name">
+                        <div class="data-results">
+                            <div class="name">
+                                <h5>Nombre</h5>
+                                <p>{{ name }}</p>
+                            </div>
+                            <div class="dni">
+                                <h5>Cédula/NIT</h5>
+                                <p>{{ dni }}</p>
+                            </div>
+                            <div class="observations">
+                                <h5>Observaciones</h5>
+                                <p v-show="observations">{{ observations }}</p>
+                                <h1 v-show="!observations">Ninguna</h1>
+                            </div>
+                        </div>
                       
-                        <table class="table-fixed text-center w-full">
+                        <!-- <table class="table-fixed text-center w-full">
                             <thead class="border bg-gray-200 ">
                                 <tr>
                                 <th class="px-4 py-2">Nombre/Empresa</th>
@@ -31,7 +46,7 @@
                                     <td class="border px-4 py-2">{{ observations }}</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
                     </div>
                     <div class="w-full" v-if="msg">
                         <p class="text-red-500 font-bold">{{ msg }}</p>
@@ -73,7 +88,10 @@
                 msg: String,
                 name: String,
                 dni: String,
-                observations: String,
+                observations: {
+                    type: String,
+                    default: "Ninguna"
+                },
                 data: String
             },
 

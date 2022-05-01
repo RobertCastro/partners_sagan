@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen ">
         <main class="login">
             <div class="mx-auto">
             <div class="py-4" v-if="$page.flash.success">

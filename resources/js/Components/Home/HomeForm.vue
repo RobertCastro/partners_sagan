@@ -5,7 +5,7 @@
                 required="required"
                 v-model="form.dni"
                 :error="errors.dni"
-                placeholder="Número de cédula"
+                placeholder="Número de cédula o NIT"
                 class="btn-home h-15 font-bold block w-full bg-white-200 text-green-700 border-2 border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             >
         </div>
